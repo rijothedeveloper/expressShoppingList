@@ -67,7 +67,7 @@ describe(" PATCH /items", function() {
         expect(res.body).toEqual(item)
     })
 
-    test("rupdate list with invalid data", async ()=> {
+    test("update list with invalid data", async ()=> {
         item = {"name":"cheerios", "price": 3.40}
         const res = await request(app).patch("/shop/items/invalid")
         .send(item)
@@ -78,9 +78,9 @@ describe(" PATCH /items", function() {
 
 describe(" DELETE /items", function() {
 
-    test("return all lists", async ()=> {
-        const res = await request(app).delete("/shop/items/popsicle")
-        // expect(res.statusCode).toBe(200)
+    test("delete a list", async ()=> {
+        const res = await request(app).delete("/shop/items/cheerios")
+        expect(res.statusCode).toBe(200)
         expect(res.body).toEqual({ message: "Deleted" });
     })
 
