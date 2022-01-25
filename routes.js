@@ -9,12 +9,15 @@ router.get("/items", (req, res) => {
 })
 
 router.post("/items", (req, res) => {
+    if (!req.body.name || !req.body.price ) {
+        throw new expressError("data required", 404)
+    }
     const item = {
         name: req.body.name,
         price: req.body.price
     }
     items.push(item)
-    res.json({addded: item})
+    res.status(201).json({added: item})
 })
 
 
